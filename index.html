@@ -126,7 +126,7 @@ audio.addEventListener('timeupdate', function(){ setActive(curLine()); });
 
 function set(on){ playing=on; btn.textContent=on?'❚❚':'▶'; disc.classList.toggle('spin',on);
   eq.classList.toggle('on',on); document.body.classList.toggle('playing',on);
-  hint.textContent=on?'正在播放，祝你生日快乐 🎶':'轻点按钮，送上祝福 🎵'; }
+  hint.textContent=on?'正在播放，祝你生日快乐 🎶':'轻点按钮，解锁新快乐 🎵'; }
 function tryPlay(){ var p=audio.play();
   if(p&&p.then){ p.then(function(){set(true); setActive(0);}).catch(function(){set(false);}); } }
 tryPlay();

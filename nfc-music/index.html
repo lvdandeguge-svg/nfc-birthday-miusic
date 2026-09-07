@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>野心家 · 张靓颖</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+  html,body { height:100%; }
+  body { display:flex; align-items:center; justify-content:center; overflow:hidden;
+         font-family:system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;
+         background:radial-gradient(120% 90% at 15% 10%, #6b1f33 0%, #3a0f22 45%, #180812 100%); }
+  body::before, body::after { content:""; position:absolute; border-radius:50%; filter:blur(70px); opacity:.55; }
+  body::before { width:340px; height:340px; left:-90px; top:-60px; background:#c98a3d; }
+  body::after { width:300px; height:300px; right:-80px; bottom:-80px; background:#e2556b; }
+  .card { position:relative; z-index:1; text-align:center; color:#fff; padding:20px; width:100%; max-width:420px; }
+  .badge { display:inline-block; font-size:11px; letter-spacing:2px; color:#ffd9a0;
+           border:1px solid rgba(255,217,160,.5); border-radius:999px; padding:4px 12px; margin-bottom:20px; }
+  .disc { width:168px; height:168px; margin:0 auto 24px; border-radius:50%; position:relative;
+          background:
+            radial-gradient(circle at center, #2b2b2b 0 26%, transparent 26.5%),
+            repeating-radial-gradient(circle, #1c1c1c 0 3px, #0d0d0d 3px 6px);
+          box-shadow:0 18px 40px rgba(0,0,0,.5), inset 0 0 0 2px rgba(255,255,255,.06); }
+  .disc .label { position:absolute; left:50%; top:50%; transform:translate(-50%,-50%);
+                 width:70px; height:70px; border-radius:50%;
+                 background:radial-gradient(circle at 35% 30%, #ffe3ad, #c98a3d 70%, #8a5a1f);
+                 color:#3a1204; font-size:30px; font-weight:700; display:flex; align-items:center; justify-content:center;
+                 box-shadow:0 0 0 6px rgba(255,255,255,.12); }
+  .disc.spin { animation:spin 5s linear infinite; }
+  @keyframes spin { to { transform:rotate(360deg); } }
+  h1 { font-size:30px; letter-spacing:4px; font-weight:700; text-shadow:0 2px 12px rgba(0,0,0,.35); }
+  .sub { margin-top:8px; font-size:14px; opacity:.85; letter-spacing:1px; }
+  .playbtn { margin-top:30px; width:86px; height:86px; border-radius:50%; border:none; cursor:pointer;
+             background:linear-gradient(135deg,#ffe3ad,#e8a24c); color:#5c1a10; font-size:34px;
+             box-shadow:0 10px 26px rgba(0,0,0,.35); display:flex; align-items:center; justify-content:center;
+             transition:transform .15s; position:relative; left:2px; }
+  .playbtn:active { transform:scale(.92); }
+  .hint { margin-top:14px; font-size:13px; opacity:.7; letter-spacing:1px; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <span class="badge">《灼灼韶华》主题曲</span>
+    <div class="disc" id="disc"><div class="label">野</div></div>
+    <h1>野心家</h1>
+    <p class="sub">张靓颖 · 演唱</p>
+    <button class="playbtn" id="btn" aria-label="播放">▶</button>
+    <p class="hint" id="hint">轻点按钮开始播放</p>
+  </div>
+  <audio id="audio" src="song.mp3" preload="auto"></audio>
+<script>
+  var audio=document.getElementById('audio'), btn=document.getElementById('btn'),
+      disc=document.getElementById('disc'), hint=document.getElementById('hint'), playing=false;
+  function set(on){ playing=on; btn.textContent=on?'❚❚':'▶'; disc.classList.toggle('spin',on);
+    hint.textContent=on?'正在播放…':'轻点按钮开始播放'; }
+  function tryPlay(){ var p=audio.play(); if(p&&p.then){ p.then(function(){set(true);}).catch(function(){set(false);}); } }
+  tryPlay();
+  btn.addEventListener('click',function(){ if(playing){ audio.pause(); set(false); } else { tryPlay(); } });
+  audio.addEventListener('ended',function(){ set(false); });
+</script>
+</body>
+</html>

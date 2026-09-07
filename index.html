@@ -62,7 +62,7 @@
     <div class="confetti-t">🎉 🎊 🎈</div>
     <h1 class="title">生日快乐</h1>
     <!-- 想写名字？把下面这行"小寿星"三个字改成名字即可 -->
-    <p class="sub">小寿星 · 愿美好如约而至 ✨</p>
+    <p class="sub">小寿星·愿你欣欣向荣✨</p>
     <div class="disc" id="disc"><div class="label">🎂</div></div>
     <p class="song">正在播放：野心家 · 张靓颖（《灼灼韶华》主题曲）</p>
 
@@ -70,7 +70,7 @@
 
     <div class="eq" id="eq"><i></i><i></i><i></i><i></i><i></i></div>
     <button class="playbtn" id="btn" aria-label="播放">▶</button>
-    <p class="hint" id="hint">轻点按钮，送上祝福 🎵</p>
+    <p class="hint" id="hint">轻点播放，解锁新年新快乐🎵</p>
   </div>
   <audio id="audio" src="song.mp3" preload="auto"></audio>
 
@@ -93,7 +93,7 @@ var LYRICS = [
 
 /* ---------- 气球与星光 ---------- */
 (function(){
-  var emoji = ["🎈","🎈","🎈","🎀","🎉","🌸"];
+  var emoji = ["🎈","🎈","🎈","🎀","🎉","🌸","🍕"];
   for (var i=0;i<9;i++){
     var b=document.createElement('div'); b.className='balloon'; b.textContent=emoji[i%emoji.length];
     b.style.left=(Math.random()*96+2)+'%'; b.style.fontSize=(26+Math.random()*22)+'px';
